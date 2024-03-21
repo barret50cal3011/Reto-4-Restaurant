@@ -8,10 +8,10 @@ class Check:
 
     
     def add_item(self, i_item: MenuItem, i_amount:int = 1):
-        if(self.__items[i_item.name] == None):
-            self.__items[i_item.name] = i_amount
+        if(not i_item.name in self.__items):
+            self.__items[i_item] = i_amount
         else:
-            self.__items[i_item.name] += i_amount
+            self.__items[i_item] += i_amount
 
     
     def apply_dicount_percent(self, i_discount):
@@ -23,7 +23,7 @@ class Check:
     def calc_amount(self):
         amount = 0
         for item in self.__items:
-            amount += self.__items[item].price
+            amount += item.price * self.__items[item]
         
         discount = 0
         for value in self.__discount_value:
