@@ -10,7 +10,7 @@ class Cash(PM):
     def pay(self, i_amount=0):
         if(self._check.calc_amount() < i_amount):
             self._log_payment(i_amount);
-            super().pay()
+            del self._check
         else:
             raise Exception("i_amount not enough to pay the check")
 

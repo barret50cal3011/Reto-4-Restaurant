@@ -13,7 +13,7 @@ class Card(PM):
             raise Exception("transaction was declined by bank")
         else:
             self._log_payment()
-            super().pay()
+            del self._check
 
     def _log_payment(self):
         file = open(self._file_str, "a")
